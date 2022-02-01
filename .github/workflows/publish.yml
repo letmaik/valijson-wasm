@@ -1,0 +1,28 @@
+name: "Publish to GitHub Pages"
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+      name: Checkout repository
+
+    - uses: mymindstorm/setup-emsdk@v11
+      name: Setup Emscripten
+
+    - run: ./build-emcc.sh
+      name: Compile wasm & Build website
+
+    - name: Publish to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./bin
+        publish_branch: gh-pages

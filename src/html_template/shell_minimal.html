@@ -140,7 +140,7 @@
               document.getElementById('output').value = '';
               var input_json = document.getElementById('input_json').value
               var schema_json = document.getElementById('schema_json').value
-              var result = main_emcc(schema_json, input_json)
+              var result = main_emcc(input_json, schema_json)
           }
           document.querySelector('#input_json')
             .addEventListener('input', valijson);
