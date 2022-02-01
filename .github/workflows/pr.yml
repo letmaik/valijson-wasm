@@ -1,0 +1,27 @@
+name: "PR CI"
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+      name: Checkout repository
+
+    - uses: mymindstorm/setup-emsdk@v11
+      name: Setup Emscripten
+
+    - run: ./build-emcc.sh
+      name: Compile wasm & Build website
+
+    - name: Store website as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: website
+        path: dist/
