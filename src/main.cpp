@@ -1,6 +1,8 @@
 #include <iostream>
 #include "json_schema.h"
 
+constexpr const char* valijson_version = VALIJSON_VERSION;
+
 int main(int argc, char** argv)
 {
   if (argc != 3)
@@ -8,6 +10,7 @@ int main(int argc, char** argv)
     std::cout << "Usage: " << argv[0] << " <schema_json> <input_json>" << std::endl;
     return 1;
   }
+  std::cout << "valijson " << valijson_version << std::endl;
   try
   {
     std::ifstream schema_file(argv[1]);

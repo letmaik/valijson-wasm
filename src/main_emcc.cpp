@@ -2,9 +2,11 @@
 #include "json_schema.h"
 #include <emscripten/emscripten.h>
 
+constexpr const char* valijson_version = VALIJSON_VERSION;
+
 int main()
 {
-  std::cout << "Initialized." << std::endl;
+  std::cout << "valijson " << valijson_version << std::endl;
 }
 
 extern "C"
