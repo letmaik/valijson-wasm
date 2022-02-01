@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-mkdir -p bin
+mkdir -p dist
 emcc \
     -s WASM=1 \
     -s NO_DISABLE_EXCEPTION_CATCHING \
@@ -11,4 +11,4 @@ emcc \
     -Wall -std=c++17 \
     -I valijson/include -I nlohmann/single_include \
     src/main_emcc.cpp \
-    -o bin/main.html
+    -o dist/index.html
